@@ -23,6 +23,10 @@ and converts it to the regexp dialect specified.
   ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
   require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
   ```
+* It would be even nicer if ezre ran the command in the destination dialect,
+  that way dealing with the ugly syntax for command substitution can be avoided
+  and running a clean cmd like: `ezre -x sed -n '/regexp/p'` or something
+  similar, would be all that's needed to use the specified command.
 
 # Possible Design Decisions/Changes
 
