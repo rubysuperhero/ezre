@@ -25,8 +25,15 @@ and converts it to the regexp dialect specified.
   ```
 * It would be even nicer if ezre ran the command in the destination dialect,
   that way dealing with the ugly syntax for command substitution can be avoided
-  and running a clean cmd like: `ezre -x sed -n '/regexp/p'` or something
-  similar, would be all that's needed to use the specified command.
+  and running a clean cmd like:
+  ```
+  $> ezre -x sed -n '/regexp/p'`
+
+  # ...or...
+
+  $> ezre run sed -n '/regexp/p'
+  ```
+  or something similar, would be all that's needed to use the specified command.
 
 # Possible Design Decisions/Changes
 
