@@ -9,6 +9,35 @@ and converts it to the regexp dialect specified.
 
 # Goals
 
+* Accept a regular expression as input, in a standardized format, and convert
+  the regular expression into another supported format. (bash, sed, awk, grep,
+  egrep, perl, etc.)  The converted regular expression can then either be:
+  * sent to stdout and used at the user's discrection
+  * automatically used in a command template and ran using the command that
+    accepts the target format
+
+## Examples
+
+_Converting_
+```
+  $> ezre convert sed 's/hello?/bye/'
+  s/hello\{0,1\}/bye/
+
+  $> ezre convert esed 's/hello?/bye/'
+  s/hello{0,1}/bye/
+```
+
+_Executing_
+```
+  $> echo 'hellz' | ezre run sed 's/hello?/bye/'
+  byez
+
+  $> echo 'hello' | ezre run esed 's/hello?/bye/'
+  bye
+```
+
+# Old, More Verbose Goals
+
 * When using different command-line tools, it would be nice to only
   have to worry about one format.  The output of ezre can be passed
   using command substitution to sed, grep, egrep, etc.
